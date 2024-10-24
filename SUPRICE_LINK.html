@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Special Gift 🎁</title>
+    <style>
+        body {
+            font-family: 'Poppins', sans-serif;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            background-color: #1d2228;
+        }
+
+        .container {
+            text-align: center;
+            background: #fb8122;
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 5px 10px rgba(0, 0, 0, 0.2);
+        }
+
+        .input-container {
+            position: relative;
+            display: inline-block;
+        }
+
+        .gift-text {
+            color: #5a5252;
+            font-size: 24px;
+            font-weight: bold;
+            cursor: pointer;
+            text-align: center;
+            margin-bottom: 20px;
+            padding-right: 40px;
+            padding-left: 10px;
+            background: rgba(255, 255, 255, 0.2);
+            border-radius: 10px;
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.192);
+            width: 150px;
+            padding: 10px;
+            transition: color 0.3s ease, background-color 0.3s ease;
+        }
+
+        .copy-icon {
+            position: absolute;
+            right: 10px;
+            top: 33%;
+            transform: translateY(-50%);
+            font-size: 26px;
+            color: #5a5252;
+            cursor: pointer;
+        }
+
+        .gift-text:hover {
+            color: #000000;
+            background: rgba(255, 255, 255, 0.3);
+        }
+
+        .copy-icon:hover {
+            color: #1d2228;
+        }
+
+        footer {
+            margin-top: 20px;
+            font-size: 16px;
+            color: #fff;
+        }
+    </style>
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/toastify-js/src/toastify.min.css">
+</head>
+
+<body>
+
+    <div class="container">
+        <h2>Surprise! 🎉</h2>
+        <p>We've prepared a small gift just for you. Feel free to click the button below to discover it! 🎁</p>
+        <p>Click Copy Icon to Get a Surprise! 🎉</p>
+        <div class="input-container">
+            <input class="gift-text" id="gift-text" value="GIFT" readonly>
+            <i class="fas fa-clipboard copy-icon" id="copyIcon"></i>
+        </div>
+        <h5>NOTES: If you copied the text, paste this text in the notepad</h5>
+    </div>
+
+    <footer>
+        Made with ❤️ by NAME
+    </footer>
+
+    <!-- Including Clipboard.js and Toastify.js -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.10/clipboard.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/toastify-js"></script>
+
+    <script>
+        const surpriseUrl = "https://example.com/surprise";
+
+        document.getElementById('gift-text').addEventListener('click', function () {
+            handleGiftClick();
+        });
+
+        document.getElementById('copyIcon').addEventListener('click', function () {
+            handleGiftClick();
+        });
+
+        function handleGiftClick() {
+            const tempTextArea = document.createElement('textarea');
+            tempTextArea.value = surpriseUrl;
+            document.body.appendChild(tempTextArea);
+            tempTextArea.select();
+            document.execCommand('copy');
+            document.body.removeChild(tempTextArea);
+            showToastMessage();
+            window.open(surpriseUrl, '_blank');
+        }
+
+        function showToastMessage() {
+            Toastify({
+                text: "COPIED INTO CLIPBOARD 🎉",
+                duration: 3000,
+                close: true,
+                gravity: "top",
+                position: "center",
+                backgroundColor: "#a7bc5b",
+                stopOnFocus: true,
+                style: {
+                    color: "black"
+                }
+            }).showToast();
+        }
+    </script>
+</body>
+
+</html>
